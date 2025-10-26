@@ -1,6 +1,6 @@
 
-w = 600;
-h = 900;
+w = 800;
+h = 1200;
 
 let panel2, panel3; //panel2 come layer di appoggio
 
