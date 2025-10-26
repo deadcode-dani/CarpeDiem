@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GENART</title>
+    <script>
+        var default_seed_buy="0x4b9ac9ff" 
+        function hashToSeed(hash) {
+            return parseInt(hash.substr(2), 16);
+        }
+
+        function reloadPageWithKey() {
+            var newKey = document.getElementById("myInput").value;
+            
+            // Aggiungi logica per validare la nuova chiave se necessario
+
+            var currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.set('key', newKey);
+
+            window.location.href = currentUrl.href;
+        }
+      
+        function reloadPageWithRandomKey() {
+            var newKey = '0x' + [...Array(8)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+
+            var currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.set('key', newKey);
+
+            window.location.href = currentUrl.href;
+        }
+
+        var dedacode_hashkey = new URLSearchParams(window.location.search).get('key');
+        
+      if (!dedacode_hashkey || dedacode_hashkey.length !== 10)
+        dedacode_hashkey='0x' + [...Array(8)].map(() => Math.floor(Math.random() * 16).toString(16)).join('');
+        
+        var seed = hashToSeed(dedacode_hashkey);
+        window.$genkey=dedacode_hashkey
+    </script>
+    <link rel="stylesheet" href="./style.css">
+    <script src="Main.js"></script>
+    <script src="Test.js"></script>
+    <script src="DrawListForms.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
+
+
+
